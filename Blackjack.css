@@ -1,0 +1,456 @@
+
+/*
+    111550024 蔡芳慈 第4次作業 11/17
+    111550024 Fangci Tsai The Fourth Homework 11/17
+*/
+body {
+    background-color: #5B8E7D;
+    color: #ffffff;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+    text-align: center;
+    overflow-x: hidden;
+}
+h1 {
+    font-size: 3em;
+    margin: 0;
+    padding: 10px;
+    -webkit-text-stroke: 1px #FFD700;
+    font-weight: bold;
+    background: linear-gradient(180deg, #FF0000, #BC4B51);
+    background-size: 10em;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 
+        0 0 5px #ffd90063,
+        0 0 10px #ffd9003d, 
+        0 0 15px #ff8c002b;
+
+    letter-spacing: 5px;
+    animation: glow-flicker 1.5s infinite alternate;
+}
+@keyframes glow-flicker {
+    0% {
+        text-shadow: 
+            0 0 5px #ffd90063,
+            0 0 10px #ffd9003d, 
+            0 0 15px #ff8c002b;
+    }
+    50% {
+        text-shadow: 
+            0 0 10px #ffd90063,
+            0 0 15px #ffd9003d, 
+            0 0 20px #ff8c002b;
+    }
+    100% {
+        text-shadow: 
+            0 0 15px #ffd90063,
+            0 0 20px #ffd9003d, 
+            0 0 25px #ff8c002b;
+    }
+  }
+#instructions {
+    position: fixed;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #F4E285;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#instructions p {
+    margin: 0;
+    padding: 0;
+}
+#background {
+    width: 80%;
+    margin: 0 auto;
+    z-index: -1;
+    opacity: 0.6;
+    position: fixed;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#background p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+#bgtxt1, #bgtxt3 {
+    font-size: 1.5em;
+    color: #F4E285;
+}
+#dealer {
+    width: 50%;
+    height: 144px;
+    align-items: center;
+    display: none;
+    justify-content: center;
+    margin: 20px auto;
+}
+#dealer .cardarea {
+    display: flex;
+}
+#player {
+    width: 50%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+}
+.playerarea {
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    width: fit-content;
+}
+.cardarea img {
+    width: 100px;
+    z-index: 1;
+    margin-left: -20px;
+    margin-right: -20px;
+    animation: slide-in 1s forwards;
+    border-radius: 5px;
+}
+@keyframes slide-in {
+    from {
+        transform: translateX(800%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.cardarea p {
+    height: fit-content;
+    font-size: 1.5em;
+    color: #F4E285;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    background-color: #BC4B51;
+    border-radius: 12px;
+    margin-right: 30px;
+    font-weight: bold;
+}
+.cardarea {
+    display: flex;
+    align-items: center;
+    height: 150px;
+}
+#player .cardarea {
+    margin-bottom: -10px;
+}
+#player .chiparea {
+    margin: 0 auto;
+    height: 100px;
+    width: 70px;
+    border: #F4E285 2px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.chiparea img {
+    width: auto;
+    height: 30px;
+    margin-left: -17.5px;
+    margin-right: -17.5px;
+    cursor: pointer;
+}
+#assignchips {
+    height: 50px;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    background-color: #F4A259;
+    border-radius: 12px;
+    color: #BC4B51;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+#assignchips p {
+    margin: 0 0 5px 5px;
+    font-size: 1.2em;
+}
+#assignchips .amount {
+    text-align: center;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: .8em;
+}
+#bank .amount {
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: .8em;
+}
+#bank .amount p {
+    padding: 0 5px;
+    margin: 5px 0;
+}
+button {
+    background-color: #BC4B51;
+    color: #F4E285;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+#bank {
+    background-color: #8CB369;
+    border-radius: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#bank, #bankchips {
+    width: fit-content;
+}
+.chip {
+    padding: 0;
+    background-color: transparent;
+}
+.chip img, .assignedchip {
+    width: auto;
+    height: 110px;
+    padding: 0;
+    margin: 0 5px;
+}
+#decisions {
+    display: none;
+}
+#result {
+    display: none;
+}
+#deal {
+    display: none;
+}
+#resulttext {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #F4E285;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-top: -20px;
+}
+#restart, #nextround {
+    display: none;
+    margin: 10px auto;
+}
+#resulttable {
+    width: 80%;
+    height: fit-content;
+    background-color: #F4E285;
+    border-radius: 12px;
+    margin: 0 auto;
+    padding-bottom: 5px;
+}
+#resulttable th {
+    background-color: #F4A259;
+    color: #BC4B51;
+    font-weight: bold;
+    border-radius: 12px;
+    padding: 3px;
+}
+#resulttable td {
+    color: #5B8E7D;
+    font-weight: bold;
+    padding: 5px;
+}
+#playercards, #dealercards {
+    width: 25%;
+}
+#chip5 {
+    display: none;
+    padding: 0 20px;
+}
+.casino-table {
+    z-index: -2;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1000px;
+    height: 95%;
+    background: linear-gradient(to bottom, #0b6623, #006400);
+    border-radius: 0 0 500px 500px;
+    box-shadow: 
+      inset 0 -4px 10px rgba(0, 0, 0, 0.5),
+      0 10px 15px rgba(0, 0, 0, 0.7);
+    border: 20px solid #8b4513;
+    border-bottom: 40px solid #8b4513;
+    padding: 10px;
+}
+#decisions button, #restart, #nextround {
+    border: #F4E285 2px solid;
+    background: linear-gradient(180deg, #BC4B51, #f97e84, #BC4B51);
+}
+.neon-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.neon-circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite alternate;
+}
+.neon-circle.pink {
+    background: #ff389b;
+    box-shadow: 0 0 10px #ff389b, 0 0 20px #ff389b, 0 0 40px #ff389b;
+}
+
+.neon-circle.blue {
+    background: #32bbff;
+    box-shadow: 0 0 10px #32bbff, 0 0 20px #32bbff, 0 0 40px #32bbff;
+}
+
+.neon-circle.yellow {
+    background: #ffff4a;
+    box-shadow: 0 0 10px #ffff4a, 0 0 20px #ffff4a, 0 0 40px #ffff4a;
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+    100% {
+        transform: scale(1.2);
+        filter: brightness(1.5);
+    }
+}
+#neonColumn1 {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+}
+#neonColumn2 {
+    position: fixed;
+    top: 0%;
+    right: 0%;
+}
+#bgmtext {
+    position: fixed;
+    top: 15px;
+    right: 75px;
+    font-size: 1.2em;
+    color: #F4E285;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+#sftext {
+    position: fixed;
+    top: 45px;
+    right: 75px;
+    font-size: 1.2em;
+    color: #F4E285;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+#toggleSwitch {
+    position: fixed;
+    top: 15px;
+    right: 30px;
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #BC4B51;
+    transition: background-color 0.3s ease;
+}
+#toggleSwitch2 {
+    position: fixed;
+    top: 45px;
+    right: 30px;
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #BC4B51;
+    transition: background-color 0.3s ease;
+}
+.switch::before {
+    content: '';
+    position: absolute;
+    top: 2.5px;
+    left: 2.5px;
+    width: 15px;
+    height: 15px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.switch.active::before {
+    transform: translateX(20px); 
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+#guide div{
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
+    color: #5B8E7D;
+    background-color: #F4E285;
+    margin: 0;
+    padding: 10px;
+    width: fit-content;
+    border-radius: 12px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+}
+li {
+    margin: 15px;
+    padding: 0;
+}
+.hightlight {
+    color: #BC4B51;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+#guide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #33333380;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+}
+h2 {
+    color: #BC4B51;
+    font-size: 2em;
+}
+#guide button{
+    margin: 20px;
+}
